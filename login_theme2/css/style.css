@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,7 @@
 }
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 main {
@@ -24,6 +26,10 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.imagem {
+  width: 37vw;
 }
 
 .section-left > h1 {
@@ -52,22 +58,22 @@ form {
 
 form > h2 {
   color: #00ff88;
-  font-size: 27pt;
+  font-size: 25pt;
   font-weight: 800;
   margin: 0;
   margin-bottom: 15px;
 }
 
 .textfield {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .textfield > input {
   width: 100%;
-  border: none;
-  margin-bottom: 27px;
+  border: none; 
+  margin-bottom: 24px;
   border-radius: 10px;
   padding: 15px;
   background-color: #514869;
@@ -81,5 +87,36 @@ form > h2 {
   color: #8bd3ffde;
   margin-bottom: 7px;
   padding-left: 4px;
-  font-size: 15pt;
+  font-size: 13pt;
 }
+
+.textfield > input::placeholder {
+  color: #ffffff94;
+  font-size: 13pt;
+}
+
+.btn {
+  width: 85%;
+  padding: 16px 0;
+  margin-top: 19px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 13pt;
+  letter-spacing: 2px;
+  color: #2b134b;
+  background: #00ff88;
+  box-shadow: 0px 15px 40px -10px #00ff8052;
+}
+
+
+
+
+
+
+
+
