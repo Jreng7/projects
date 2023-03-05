@@ -26,9 +26,9 @@ main {
     flex-direction: column;
     align-items: center;
     background-color: #181920;
-    width: 355px;
-    height: 320px;
-    padding: 30px;
+    width: 555px;
+    height: 520px;
+    padding: 17px;
     border-radius: 20px;
 
     -webkit-box-shadow: 5px 5px 31px 7px rgba(0,0,0,0.29);
@@ -39,13 +39,61 @@ main {
 .login form {
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 .login input {
-    margin-top: 10px;
+    margin-top: 12px;
+    background-color: #252A34;
+    border: none;
+    border-radius: 8px;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 18px;
 }
 
 .login img {
-    width: 80px;
+    width: 151px;
     height: auto;
+}
+
+input::placeholder {
+    color: rgb(173, 169, 169);
+    text-align: center;
+    font-size: 18px;
+    
+}
+
+button {
+    display: block;
+    width: 80%;
+    height: 50px;
+    color: #fff;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #5568FE;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #707fee;
+}
+
+p {
+    color: #CBD0F7;
+}
+
+a {
+    color: #41ff8a;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+a:hover {
+    color: #CBD0F7;
 }
