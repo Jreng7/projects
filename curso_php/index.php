@@ -1,3 +1,3 @@
 <?php 
-  echo 'Talvez primeiro código em php'
+  echo 'Talvez primeiro código em php';
 ?>
