@@ -1,20 +1,15 @@
-import './App.css'
+import "./App.css";
+import { Login } from "./components/Login";
+
 
 function App() {
-
   return (
     <>
-     <main>
-        <div className="login-form-wrap">
-          <h2>Login</h2>
-
-          <form action="">
-
-          </form>
-        </div>
-     </main>
+      <main>
+        <Login />
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
