@@ -1,7 +1,9 @@
 import express from 'express'
 import { router } from './routes.js'
+import cors from 'cors'
 
 const server = express()
+server.use(cors()) // Cross Origin Resource Sharing (CORS)
 server.use(express.json())
 server.use(router)
 
