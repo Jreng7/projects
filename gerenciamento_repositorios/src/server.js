@@ -1,5 +1,7 @@
-import app from "./app";
+import app from './app.js'
 
-app.listen(5000, () => {
-  console.log('Server running at port 5000')
+const PORT = 5000
+
+app.listen(PORT, () => {
+  console.log(`Server running at port http://localhost:${PORT}`)
 })
