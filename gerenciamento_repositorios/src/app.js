@@ -1,6 +1,8 @@
-import express, { Router } from 'express'
+import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
+import router from './routes/routes.js';
+
 
 class App {
 
@@ -18,13 +20,6 @@ class App {
   }
 
   routes(){
-
-    const router = Router()
-
-    router.get('/ping', (req, res) => {
-    
-    })  
-
     this.server.use(router)
   }
 
