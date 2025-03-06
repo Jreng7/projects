@@ -22,7 +22,7 @@ class App {
     const router = Router()
 
     router.get('/ping', (req, res) => {
-      res.json({ ping: 'pong'})
+    
     })  
 
     this.server.use(router)
