@@ -1,10 +1,9 @@
-import express from 'express'
+import express from 'express';
+import './database/index.js'
 import helmet from 'helmet'
-import dotenv from 'dotenv'
 import cors from 'cors'
 import { router } from './routes/routes.js';
 
-dotenv.config();
 
 class App {
 
