@@ -1,15 +1,19 @@
 import express from 'express'
-import cors from 'cors'
 import helmet from 'helmet'
-import router from './routes/routes.js';
+import dotenv from 'dotenv'
+import cors from 'cors'
+import { router } from './routes/routes.js';
 
+dotenv.config();
 
 class App {
 
   constructor(){
+
     this.server = express()
     this.middlewares()
     this.routes()
+    
   }
 
   middlewares(){
