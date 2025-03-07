@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
 
+   // campos
   {
     email: {
       type: String,
@@ -17,7 +18,10 @@ const userSchema = new mongoose.Schema(
     }
   },
 
+  // CONFIG do Model. Preenchido automaticamente pelo mongoDB
   {
     timestamps: true
   }
 )
+
+export default mongoose.model('User', userSchema)
