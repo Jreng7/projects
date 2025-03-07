@@ -1,4 +1,6 @@
 import User from '../models/User.js'
+import { createPasswordHash } from '../services/auth.js'
+
 
 class UsersController {
 
@@ -28,8 +30,9 @@ class UsersController {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
 
-      
+      const encryptedPassword = createPasswordHash(password)
 
+      
       const newUser = await User.create({ email, password })
       return res.status(201).json(newUser)
 
