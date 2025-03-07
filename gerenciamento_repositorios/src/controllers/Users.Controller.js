@@ -70,14 +70,19 @@ class UsersController {
       await user.updateOne({ email, password: encryptedPassword})
     
       return res.status(204).json()
-      
+
     } catch (error) {
       return res.status(500).json({ error: "Internal server error." })
     }
   }
 
   async remove(req, res) {
-
+    try {
+      const { id } = req.params;
+    } catch (err) {
+      console.error(err)
+      return res.status(500).json({ error: "Internal server error." })
+    }
   }
 
 }
