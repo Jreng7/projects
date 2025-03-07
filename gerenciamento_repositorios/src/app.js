@@ -2,7 +2,7 @@ import express from 'express';
 import './database/index.js'
 import helmet from 'helmet'
 import cors from 'cors'
-import { router } from './routes/routes.js';
+import { router } from './routes/index.js';
 
 
 class App {
