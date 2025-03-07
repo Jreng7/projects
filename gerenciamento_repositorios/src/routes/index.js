@@ -6,6 +6,4 @@ const router = Router()
 router.use('/users', usersRouter)
 
 
-
-
 export { router }
