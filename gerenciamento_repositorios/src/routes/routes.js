@@ -1,6 +1,7 @@
 import { Router } from "express";
-import PingController from '../controllers/PingController.js' 
+import UsersController from "../controllers/Users.Controller.js"; 
 
 export const router = Router()
 
-router.get('/ping', PingController.index)
+router.get('/ping', UsersController.index)
+router.post('/ping', UsersController.create)
