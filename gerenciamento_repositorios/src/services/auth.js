@@ -1,7 +1,7 @@
-import bcrypt from "bcryptjs";
+import { hash } from "bcryptjs";
 
 const createPasswordHash = async (parametro) => {
-  return await bcrypt.hash(parametro, 10)
+  return await hash(parametro, 10)
 }
 
 export { createPasswordHash }
