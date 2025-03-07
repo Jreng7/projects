@@ -18,7 +18,21 @@ class UsersController {
   }
 
   async show(req, res) {
-     
+     try {
+
+      const { id } = req.params
+      const user = await User.findById(id)
+
+      if (!user) {
+        return res.status(404).json();
+      }
+
+      return res.json(user)
+
+     } catch (err) {
+        console.error(err)
+        return res.status(500).json({ error: 'Internal server error.' })
+     }
   }
 
   async create(req, res) {
@@ -30,10 +44,9 @@ class UsersController {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
 
-      const encryptedPassword = createPasswordHash(password)
-
+      const encryptedPassword = await createPasswordHash(password)
       
-      const newUser = await User.create({ email, password })
+      const newUser = await User.create({ email, password: encryptedPassword })
       return res.status(201).json(newUser)
 
     } catch (err) {
