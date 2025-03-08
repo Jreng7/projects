@@ -27,25 +27,33 @@ class RepositoriesController {
       const { user_id } = req.params
       const { name, url } = req.body
 
-      const user = await User.findById(user_id)
+      const userExists = await User.exists({ _id: user_id })
 
-      if (!user) {
+      if (!userExists) {
         return res.status(404).json({ error: "User not found." })
       }
 
       const repository = await Repository.findOne({ name, userId: user_id })
 
-      if (!repository) {
+      if (repository) {
         return res.status(422).json({ message: `Repository ${name} already exists.` })
       }
 
       const newRepository = await Repository.create({ name, url, userId: user_id })
 
-      return res.json(newRepository)
+      return res.status(201).json(newRepository)
 
     } catch (error) {
       console.error(err)
       return res.status(500).json({ error: 'Internal server error.' })
+    }
+  }
+
+  async remove(req, res) {
+    try {
+      
+    } catch (error) {
+      
     }
   }
 

@@ -12,4 +12,4 @@ usersRouter.put('/:id', UsersController.update)
 usersRouter.delete('/:id', UsersController.remove)
 
 usersRouter.get('/:user_id/repositories', RepositoriesController.index)
-usersRouter.put('/:user_id/repositories', RepositoriesController.create)
+usersRouter.post('/:user_id/repositories', RepositoriesController.create);
