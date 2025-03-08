@@ -6,7 +6,7 @@ class RepositoriesController {
   async index(req, res) {
     try {
       const { user_id } = req.params
-      const user = await User.findById(userId)
+      const user = await User.findById(user_id)
 
       if (!user) {
         return res.status(404).json({ error: "User not found." })
@@ -23,7 +23,21 @@ class RepositoriesController {
   }
 
   async create(req, res) {
-    
+    try {
+      const { user_id } = req.params
+      const user = await User.findById(user_id)
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found." })
+      }
+
+      const repositories = await Repository.find({ userId: user_id })
+      return res.json(repositories)
+
+    } catch (error) {
+      console.error(err)
+      return res.status(500).json({ error: 'Internal server error.' })
+    }
   }
 
 }
