@@ -4,12 +4,19 @@ import Repository from '../models/Repository.js'
 class RepositoriesController {
 
   async index(req, res) {
-
     try {
-      
+      const { userId } = req.params
+      const user = await User.findById(userId)
 
-      const users = await User.find()
-      return res.json(users)
+      if (!user) {
+        return res.status(404).json({ error: "User not found." })
+      }
+
+      const repositories = await Repository.find({
+        
+      })
+      return res.json(repositories)
+
     } catch (err) {
       console.error(err)
       return res.status(500).json({ error: 'Internal server error.' })
