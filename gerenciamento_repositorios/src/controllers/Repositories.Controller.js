@@ -5,16 +5,14 @@ class RepositoriesController {
 
   async index(req, res) {
     try {
-      const { userId } = req.params
+      const { user_id } = req.params
       const user = await User.findById(userId)
 
       if (!user) {
         return res.status(404).json({ error: "User not found." })
       }
 
-      const repositories = await Repository.find({
-        
-      })
+      const repositories = await Repository.find({ userId: user_id })
       return res.json(repositories)
 
     } catch (err) {
