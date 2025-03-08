@@ -22,6 +22,10 @@ class RepositoriesController {
 
   }
 
+  async create(req, res) {
+    
+  }
+
 }
 
 export default new RepositoriesController()
