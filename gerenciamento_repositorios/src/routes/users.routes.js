@@ -3,14 +3,14 @@ import { Router } from "express";
 import UsersController from "../controllers/Users.Controller.js"; 
 import RepositoriesController from "../controllers/Repositories.Controller.js";
 
-export const usersRouter = Router()
+export const router = Router()
 
-usersRouter.get('/', UsersController.index)
-usersRouter.get('/:id', UsersController.show)
-usersRouter.post('/', UsersController.create)
-usersRouter.put('/:id', UsersController.update)
-usersRouter.delete('/:id', UsersController.remove)
+router.get('/users', UsersController.index)
+router.get('/users/:id', UsersController.show)
+router.post('/users', UsersController.create)
+router.put('/users/:id', UsersController.update)
+router.delete('/users/:id', UsersController.remove)
 
-usersRouter.get('/:user_id/repositories', RepositoriesController.index)
-usersRouter.post('/:user_id/repositories', RepositoriesController.create);
-usersRouter.delete('/:user_id/repositories/:id_repo', RepositoriesController.remove);
+router.get('/users/:user_id/repositories', RepositoriesController.index)
+router.post('/users/:user_id/repositories', RepositoriesController.create);
+router.delete('/users/:user_id/repositories/:id_repo', RepositoriesController.remove);

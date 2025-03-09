@@ -44,7 +44,7 @@ class RepositoriesController {
       return res.status(201).json(newRepository)
 
     } catch (error) {
-      console.error(err)
+      console.error(error)
       return res.status(500).json({ error: 'Internal server error.' })
     }
   }
@@ -74,5 +74,5 @@ class RepositoriesController {
   }
 
 }
-
+ 
 export default new RepositoriesController()
