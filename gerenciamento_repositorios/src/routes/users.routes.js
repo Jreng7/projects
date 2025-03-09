@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Router } from "express"
 import auth from '../middlewares/auth.js'
-import UsersController from "../controllers/Users.Controller.js"; 
-import RepositoriesController from "../controllers/Repositories.Controller.js";
+import UsersController from "../controllers/Users.Controller.js"
+import RepositoriesController from "../controllers/Repositories.Controller.js"
 
 export const router = Router()
 
