@@ -1,15 +1,18 @@
 import { Router } from "express";
-
+import auth from '../middlewares/auth.js'
 import UsersController from "../controllers/Users.Controller.js"; 
 import RepositoriesController from "../controllers/Repositories.Controller.js";
 
 export const router = Router()
+
+router.use(auth)
 
 router.get('/users', UsersController.index)
 router.get('/users/:id', UsersController.show)
 router.post('/users', UsersController.create)
 router.put('/users/:id', UsersController.update)
 router.delete('/users/:id', UsersController.remove)
+
 
 router.get('/users/:user_id/repositories', RepositoriesController.index)
 router.post('/users/:user_id/repositories', RepositoriesController.create);
