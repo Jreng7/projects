@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import User from './Users.Controller'
 import { checkPassword } from '../services/auth'
-import authConfig from '../config/auth-jwt.js'
+import auth from '../config/auth-jwt.js'
 
 class SessionController {
   async create(req, res) {
@@ -19,7 +19,7 @@ class SessionController {
 
     const { id } = user 
 
-    return res.json({ user: { id, email }, token: jwt.sign({ id }), authConfig.secrect})
+    return res.json({ user: { id, email }, token: jwt.sign( { id }, auth.secrect) })
 
   }
 }
