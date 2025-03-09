@@ -51,7 +51,22 @@ class RepositoriesController {
 
   async remove(req, res) {
     try {
-      
+      const { user_id, id_repo } = req.params
+
+      const userExists = await User.exists({ _id: user_id })
+      if (!userExists) {
+        return res.status(404).json({ message: "User not found" })
+      }
+
+      const repository = await Repository.findOne({userId: user_id, _id: id_repo })
+
+      if (!repository) {
+        return res.status(404).json({ message: "Repository not found" })
+      }
+
+      await repository.deleteOne()
+      return res.status(204).end()
+
     } catch (err) {
       console.error(err)
       return res.status(500).json({ error: "Internal server error." })

@@ -13,3 +13,4 @@ usersRouter.delete('/:id', UsersController.remove)
 
 usersRouter.get('/:user_id/repositories', RepositoriesController.index)
 usersRouter.post('/:user_id/repositories', RepositoriesController.create);
+usersRouter.delete('/:user_id/repositories/:id_repo', RepositoriesController.remove);
