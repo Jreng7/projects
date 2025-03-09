@@ -27,14 +27,16 @@ class RepositoriesController {
       const { user_id } = req.params
       const { name, url } = req.body
 
-      const userExists = await User.exists({ _id: user_id })
+      if (user_id !== req.userId.toString()) { 
+        return res.status(403).json({ error: "Ação não permitida." });
+      }
 
+      const userExists = await User.exists({ _id: user_id })
       if (!userExists) {
         return res.status(404).json({ error: "User not found." })
       }
 
       const repository = await Repository.findOne({ name, userId: user_id })
-
       if (repository) {
         return res.status(422).json({ message: `Repository ${name} already exists.` })
       }

@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken'
+import promisify from 'util'
 import auth from '../config/auth-jwt.js'
 
 export default async (req, res, next) => {
 
-  const authHeader = req.headers.authorization
+  const { authorization: authHeader } = req.headers // const authHeader = req.headers.authorization
 
   if (!authHeader) {
     return res.status(401).json({ error: 'Token was not provided' })
@@ -17,11 +18,13 @@ export default async (req, res, next) => {
 
   const [, token] = parts
 
-  const authenticated = true
+  try {
+    const decoded = await promisify(jwy.verify(token, auth.secrect))
 
-  if (authenticated) {
+    req.userId = decoded.id
     return next()
-  } else {
-    return res.status(401).end()
+
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid token.' })
   }
-} 
+}
