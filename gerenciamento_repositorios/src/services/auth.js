@@ -6,4 +6,4 @@ export const createPasswordHash = async (parametro) => {
 
 
 export const checkPassword = async (user, password) => {
-  compare(password, user.password)}
+  return await compare(password, user.password)}
