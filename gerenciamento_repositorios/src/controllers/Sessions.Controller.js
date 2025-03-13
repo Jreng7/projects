@@ -4,7 +4,9 @@ import { checkPassword } from '../services/auth'
 import auth from '../config/auth-jwt.js'
 
 class SessionController {
+  
   async create(req, res) {
+
     const { email, password } = req.body
 
     const user = await User.findOne({ email })

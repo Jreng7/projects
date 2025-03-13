@@ -1,25 +1,17 @@
 import jwt from 'jsonwebtoken'
-import promisify from 'util'
 import auth from '../config/auth-jwt.js'
 
 export default async (req, res, next) => {
 
-  const { authorization: authHeader } = req.headers // const authHeader = req.headers.authorization
+  const token = req.headers.authorization?.split(' ')[1] // const authHeader = req.headers.authorization
+  console.log(req.headers.authorization); 
 
-  if (!authHeader) {
+  if (!token) {
     return res.status(401).json({ error: 'Token was not provided' })
   }
-
-  const parts = authHeader.spli(' ')
-
-  if (parts.length !== 2 || parts[0] !== "Bearer") {
-    return res.status(401).json({ error: "Formato de token inválido." })
-  }
-
-  const [, token] = parts
-
+  
   try {
-    const decoded = await promisify(jwt.verify(token, auth.secrect))
+    const decoded = jwt.verify(token, auth.secrect)
 
     req.userId = decoded.id
     return next()

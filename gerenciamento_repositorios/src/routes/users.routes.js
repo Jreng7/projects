@@ -5,8 +5,6 @@ import RepositoriesController from "../controllers/Repositories.Controller.js"
 
 export const router = Router()
 
-router.use(auth)
-
 router.get('/users', UsersController.index)
 router.get('/users/:id', UsersController.show)
 router.post('/users', UsersController.create)

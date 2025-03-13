@@ -60,9 +60,9 @@ class RepositoriesController {
         return res.status(404).json({ message: "User not found" })
       }
 
-      const repository = await Repository.findOne({userId: user_id, _id: id_repo })
+      const repository = await Repository.findOne({ userId: user_id, _id: id_repo })
 
-      if (!repository) {
+      if (!repository) {  
         return res.status(404).json({ message: "Repository not found" })
       }
 
