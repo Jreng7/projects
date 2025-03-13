@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { promisify } from 'util'
+import promisify from 'util'
 import auth from '../config/auth-jwt.js'
 
 export default async (req, res, next) => {
