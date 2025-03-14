@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 import { createPasswordHash } from '../services/auth.js'
+import { createUserSchema } from '../schemas/user.schema.js'
 
 
 class UsersController {
@@ -19,7 +20,6 @@ class UsersController {
 
   async show(req, res) {
      try {
-
       const { id } = req.params
       const user = await User.findById(id)
 
@@ -37,7 +37,10 @@ class UsersController {
 
   async create(req, res) {
     try {
-      const { email, password } = req.body
+      const schemaValidator = createUserSchema.parse(req.body)
+
+      const { email, password } = schemaValidator
+
       const user = await User.findOne({ email });
 
       if (user) {
@@ -47,7 +50,12 @@ class UsersController {
       const encryptedPassword = await createPasswordHash(password)
       
       const newUser = await User.create({ email, password: encryptedPassword })
-      return res.status(201).json(newUser)
+
+      return res.status(201).json({
+        id: newUser._id,
+        email: newUser.email,
+        createdAt: newUser.createdAt
+      });
 
     } catch (err) {
       console.error(err)
