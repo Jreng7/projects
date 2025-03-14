@@ -35,6 +35,7 @@ class UsersController {
      }
   }
 
+  // 14/03/2025 às 18:26 "Por enquanto, apenas o Create foi acrescentado o Zod"
   async create(req, res) {
     try {
       const schemaValidator = createUserSchema.parse(req.body)
