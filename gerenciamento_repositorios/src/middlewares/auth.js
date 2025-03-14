@@ -1,22 +1,27 @@
-import jwt from 'jsonwebtoken'
-import auth from '../config/auth-jwt.js'
+import jwt from 'jsonwebtoken';
+import auth from '../config/auth-jwt.js';
 
 export default async (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
-  const token = req.headers.authorization?.split(' ')[1] // const authHeader = req.headers.authorization
-  console.log(req.headers.authorization); 
+  // 1. Verifica se o header existe e começa com "Bearer "
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Formato de token inválido' });
+  }
 
+  // 2. Extrai o token após a validação do formato
+  const token = authHeader.split(' ')[1];
+
+  // 3. Verifica se o token existe (evita "Bearer " sem token)
   if (!token) {
-    return res.status(401).json({ error: 'Token was not provided' })
+    return res.status(401).json({ error: 'Token não fornecido' });
   }
-  
-  try {
-    const decoded = jwt.verify(token, auth.secret)
 
-    req.userId = decoded.id
-    return next()
-    
+  try {
+    const decoded = jwt.verify(token, auth.secret);
+    req.userId = decoded.id;
+    next();
   } catch (err) {
-    return res.status(401).json({ error: 'Invalid token.' })
+    return res.status(401).json({ error: 'Token inválido' });
   }
-}
+};
