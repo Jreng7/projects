@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
 export default {
-  secrect: process.env.APP_SECRECT,
+  secret: process.env.APP_SECRET,
   expiresIn: "1h"
 }
