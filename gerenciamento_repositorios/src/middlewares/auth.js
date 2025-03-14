@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import auth from '../config/auth-jwt.js';
 
 export default async (req, res, next) => {
+  
   const authHeader = req.headers.authorization;
 
   // 1. Verifica se o header existe e começa com "Bearer "
