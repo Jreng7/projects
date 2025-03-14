@@ -58,8 +58,15 @@ class UsersController {
       });
 
     } catch (err) {
-      console.error(err)
-      return res.status(500).json({ error: 'Internal server error.' })
+
+      // Tratamento ZOD (sem detalhes)
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ error: "Dados inválidos" });
+      }
+
+      // Tratamento genérico para TODOS os outros erros
+      console.error(err);
+      return res.status(500).json({ error: 'Erro interno' });
     }
   }
 
