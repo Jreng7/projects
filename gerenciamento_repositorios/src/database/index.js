@@ -1,11 +1,16 @@
 import mongoose from "mongoose";
-import config from "../config/conexaomongo.js";
+import config from "../config/conexaomongo";
 
 class Database {
-  constructor() {
-    this.connection = mongoose.connect(config.url)
+  static async conexaoBanco() {
+    try {
+      await mongoose.connect(config.url)
+      console.log('🟢 Conectado ao MongoDB')
+    } catch (err) {
+      console.error('🔴 Falha crítica:', err)
+      process.exit(1); 
+    }
   }
-
 }
 
-export default new Database();
+export default Database
