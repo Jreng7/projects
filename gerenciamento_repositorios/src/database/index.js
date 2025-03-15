@@ -5,10 +5,9 @@ class ConexaoDatabase {
 
   async conexaoBanco(){
     try {
-      
       await mongoose.connect(config.url)
-
       console.log('🟢 Conectado ao MongoDB')
+      
     } catch (err) {
       console.error('🔴 Server not found.', err)
       process.exit(1)

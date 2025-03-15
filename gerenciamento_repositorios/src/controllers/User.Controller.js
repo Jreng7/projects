@@ -1,6 +1,6 @@
 import User from '../models/User.js'
 import { createPasswordHash } from '../services/auth.js'
-import { createUserSchema } from '../schemas/user.schema.js'
+import { createUserSchema } from '../schemas/user.schema.js''
 
 
 class UsersController {
@@ -73,8 +73,11 @@ class UsersController {
 
   async update(req, res) {
     try {
+
+      const schemaValidator = createUserSchema.parse(req.body)
+
       const { id } = req.params
-      const { email, password } = req.body
+      const { email, password } = schemaValidator
 
       const user = await User.findById(id)
 

@@ -7,8 +7,8 @@ config()
 const port = process.env.PORT || 3033
 
 async function startServer() {
-
   await conexaoBanco()
+
   app.listen(port, () => {
     console.log(`Server running at port http://localhost:${port}`)
   })
