@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import User from './User.Controller.js'
-import { checkPassword } from '../services/auth.js'
+import { checkPasswordHash } from '../services/auth.js'
 import auth from '../config/auth-jwt.js'
 
 class SessionController {
@@ -15,7 +15,7 @@ class SessionController {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 
-    if (! (await checkPassword(user, password)) ) {
+    if (! (await checkPasswordHash(password, user)) ) {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 

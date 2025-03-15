@@ -1,8 +1,9 @@
 import { hash, compare } from "bcryptjs";
 
-export const createPasswordHash = async (senha) => {
+export async function createPasswordHash(senha) {
   return await hash(senha, 10)
 }
 
-export const checkPassword = async (user, password) => {
-  return await compare(password, user.password)}
+export async function checkPasswordHash(password, user) {
+  return await compare(password, user.password)
+}   
