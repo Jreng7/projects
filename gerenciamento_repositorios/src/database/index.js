@@ -1,18 +1,20 @@
 import mongoose from "mongoose";
-import config from "../config/conexaomongo.js";
+import config from '../config/conexaomongo.js'
 
-class Database {
+class ConexaoDatabase {
 
-  static async conexaoBanco() {
+  async conexaoBanco(){
     try {
+      
       await mongoose.connect(config.url)
-      console.log('🟢 Conectado ao MongoDB')
 
+      console.log('🟢 Conectado ao MongoDB')
     } catch (err) {
-      console.error('🔴 Falha crítica:', err)
-      process.exit(1); 
+      console.error('🔴 Server not found.', err)
+      process.exit(1)
     }
   }
+
 }
 
-export default Database
+export default new ConexaoDatabase().conexaoBanco
