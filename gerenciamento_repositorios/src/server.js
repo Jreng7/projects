@@ -1,12 +1,15 @@
 import app from './app.js'
 import Database from './database/index.js'
+import { config } from 'dotenv'
 
-const PORT = 5000
+config()
+
+const port = process.env.PORT || 3033
 
 const startServer = async () => {
   await Database.conexaoBanco()
-  app.listen(PORT, () => {
-    console.log(`Server running at port http://localhost:${PORT}`)
+  app.listen(port, () => {
+    console.log(`Server running at port http://localhost:${port}`)
   })
 }
 
