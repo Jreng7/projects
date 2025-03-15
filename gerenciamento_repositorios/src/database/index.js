@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import config from "../config/conexaomongo";
+import config from "../config/conexaomongo.js";
 
 class Database {
 
