@@ -1,6 +1,6 @@
 import User from '../models/User.js'
 import { createPasswordHash } from '../services/auth.js'
-import { createUserSchema } from '../schemas/user.schema.js''
+import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js''
 
 
 class UsersController {
@@ -35,21 +35,17 @@ class UsersController {
      }
   }
 
-  // 14/03/2025 às 18:26 "Por enquanto, apenas o Create foi acrescentado o Zod"
   async create(req, res) {
     try {
       const schemaValidator = createUserSchema.parse(req.body)
-
       const { email, password } = schemaValidator
 
       const user = await User.findOne({ email });
-
       if (user) {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
 
       const encryptedPassword = await createPasswordHash(password)
-      
       const newUser = await User.create({ email, password: encryptedPassword })
 
       return res.status(201).json({
@@ -59,13 +55,9 @@ class UsersController {
       });
 
     } catch (err) {
-
-      // Tratamento ZOD (sem detalhes)
       if (err instanceof z.ZodError) {
         return res.status(400).json({ error: "Dados inválidos" });
       }
-
-      // Tratamento genérico para TODOS os outros erros
       console.error(err);
       return res.status(500).json({ error: 'Erro interno' });
     }
@@ -74,7 +66,7 @@ class UsersController {
   async update(req, res) {
     try {
 
-      const schemaValidator = createUserSchema.parse(req.body)
+      const schemaValidator = updateUserSchema.parse(req.body)
 
       const { id } = req.params
       const { email, password } = schemaValidator
@@ -85,13 +77,20 @@ class UsersController {
         return res.status(404).json({ error: "Usuário não encontrado." })
       }
 
-      const encryptedPassword = await createPasswordHash(password)
-      await user.updateOne({ email, password: encryptedPassword})
-    
-      return res.status(204).end()
+      if (password) {
+        schemaValidator.password = await createPasswordHash(password);
+      }
 
-    } catch (error) {
-      return res.status(500).json({ error: "Internal server error." })
+      await user.updateOne({ email, password: schemaValidator.password || user.password });
+
+      return res.status(200).end();
+    } catch (err) {
+        if (err instanceof z.ZodError) {
+          return res.status(400).json({ error: "Dados inválidos." });
+        }
+    
+        console.error(err);
+        return res.status(500).json({ error: "Internal server error." });
     }
   }
 
