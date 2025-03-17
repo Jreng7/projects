@@ -1,9 +1,13 @@
 import User from '../models/User.js'
-import { createPasswordHash } from '../services/AuthServiceBcrypt.js'
-import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js''
+import { authService } from '../services/AuthServiceBcrypt.js'
+import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js'
 
 
 class UsersController {
+
+  constructor(authService) {
+    this.authService = authService
+  }
 
   async index(req, res) {
 
@@ -37,6 +41,7 @@ class UsersController {
 
   async create(req, res) {
     try {
+
       const schemaValidator = createUserSchema.parse(req.body)
       const { email, password } = schemaValidator
 
@@ -45,7 +50,7 @@ class UsersController {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
 
-      const encryptedPassword = await createPasswordHash(password)
+      const encryptedPassword = await this.authService.createHash(password)
       const newUser = await User.create({ email, password: encryptedPassword })
 
       return res.status(201).json({
@@ -77,7 +82,7 @@ class UsersController {
       }
 
       if (password) {
-        schemaValidator.password = await createPasswordHash(password);
+        schemaValidator.password = await this.authService.compareHash(password);
       }
 
       await user.updateOne({ email, password: schemaValidator.password || user.password });
@@ -104,7 +109,6 @@ class UsersController {
 
       await user.deleteOne()
       return res.status(204).end()
-
     } catch (err) {
       console.error(err)
       return res.status(500).json({ error: "Internal server error." })
@@ -113,4 +117,4 @@ class UsersController {
 
 }
 
-export default new UsersController()
+export default new UsersController(authService)
