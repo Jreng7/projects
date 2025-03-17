@@ -8,7 +8,7 @@ class SessionController {
   
   async create(req, res) {
 
-    const { email, password } = loginSchema(req.body)
+    const { email, password } = loginSchema.parse(req.body)
 
     const user = await User.findOne({ email })
     if (!user) {
