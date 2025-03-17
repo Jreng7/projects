@@ -1,12 +1,16 @@
 import jwt from 'jsonwebtoken'
-import User from './User.Controller.js'
-import { checkPasswordHash } from '../services/auth.js'
+import User from '../models/User.js'
+import { authService } from '../services/auth.js'
 import auth from '../config/auth-jwt.js'
 import { loginSchema } from '../schemas/user.schema.js'
 
-class SessionController {
+export class SessionController {
   
-  async create(req, res) {
+  constructor(authService) {
+    this.authService = authService
+  }
+
+  async login(req, res) {
 
     const { email, password } = loginSchema.parse(req.body)
 
@@ -15,8 +19,10 @@ class SessionController {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 
-    if (! (await checkPasswordHash(password, user)) ) {
-      return res.status(401).json({ error: 'User / Password invalid.' })
+    const isPasswordValid = await this.authService.compare(password, user)
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: 'User / Password invalid.' });
     }
 
     const { _id } = user 
@@ -25,4 +31,6 @@ class SessionController {
   }
 }
 
-export default new SessionController()
+
+// Injeta o authService ao criar a instância! ✅
+export default new SessionController(authService)
