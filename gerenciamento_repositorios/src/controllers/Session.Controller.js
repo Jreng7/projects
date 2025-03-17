@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
-import { authService } from '../services/AuthServiceBcrypt.js'
 import auth from '../config/auth-jwt.js'
+import { authService } from '../services/AuthServiceBcrypt.js'
 import { loginSchema } from '../schemas/user.schema.js'
 
 export class SessionController {
@@ -19,7 +19,7 @@ export class SessionController {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 
-    const isPasswordValid = await this.authService.compare(password, user)
+    const hashIsValid = await this.authService.compare(password, user)
 
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'User / Password invalid.' });
