@@ -1,5 +1,5 @@
 import User from '../models/User.js'
-import { createPasswordHash } from '../services/auth.js'
+import { createPasswordHash } from '../services/AuthServiceBcrypt.js'
 import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js''
 
 

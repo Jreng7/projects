@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
-import { authService } from '../services/auth.js'
+import { authService } from '../services/AuthServiceBcrypt.js'
 import auth from '../config/auth-jwt.js'
 import { loginSchema } from '../schemas/user.schema.js'
 
