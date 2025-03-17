@@ -1,5 +1,7 @@
 import User from '../models/User.js'
 import Repository from '../models/Repository.js'
+import { createRepoSchema } from '../schemas/repo.schema.js'
+
 
 class RepositoriesController {
 
@@ -24,8 +26,9 @@ class RepositoriesController {
 
   async create(req, res) {
     try {
+
       const { user_id } = req.params
-      const { name, url } = req.body
+      const { name, url } = createRepoSchema(req.body)
 
       if (user_id !== req.userId.toString()) { 
         return res.status(403).json({ error: "Ação não permitida." });
