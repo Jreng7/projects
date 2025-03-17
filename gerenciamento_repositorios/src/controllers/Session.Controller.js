@@ -21,7 +21,7 @@ export class SessionController {
 
     const hashIsValid = await this.authService.compare(password, user)
 
-    if (!isPasswordValid) {
+    if (!hashIsValid) {
       return res.status(401).json({ error: 'User / Password invalid.' });
     }
 

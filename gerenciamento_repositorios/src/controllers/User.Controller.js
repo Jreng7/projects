@@ -72,7 +72,6 @@ class UsersController {
       const { email, password } = schemaValidator
 
       const user = await User.findById(id)
-
       if (!user) {
         return res.status(404).json({ error: "Usuário não encontrado." })
       }
@@ -83,7 +82,7 @@ class UsersController {
 
       await user.updateOne({ email, password: schemaValidator.password || user.password });
 
-      return res.status(200).end();
+      return res.status(204).end();
     } catch (err) {
         if (err instanceof z.ZodError) {
           return res.status(400).json({ error: "Dados inválidos." });
