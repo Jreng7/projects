@@ -4,7 +4,8 @@ import auth from '../config/auth-jwt.js';
 async function authMiddleware (req, res, next) {
   
   const authHeader = req.headers.authorization
-  if (!authHeader?.startsWith('Bearer ')) {
+
+  if (!authHeader?.startsWith('Bearer ') || !authHeader) {
     return res.status(401).json({ error: 'Formato de token inválido' });
   }
 

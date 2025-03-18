@@ -1,7 +1,7 @@
 import { Router } from "express"
 
-import usersRouter from './users.routes.js'
-import repositoryRouter from './repositories.routes.js'
+import { usersRouter } from './users.routes.js'
+import { repositoryRouter } from './repositories.routes.js'
 
 export const router = Router()
 
