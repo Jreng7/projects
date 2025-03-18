@@ -4,6 +4,7 @@ import auth from '../config/auth-jwt.js'
 import { authService } from '../services/AuthServiceBcrypt.js'
 import { loginSchema } from '../schemas/user.schema.js'
 
+
 export class SessionController {
   
   constructor(authService) {
@@ -33,4 +34,4 @@ export class SessionController {
 
 
 // Injeta o authService ao criar a instância! ✅
-export default new SessionController(authService)
+export const loginController = new SessionController(authService)
