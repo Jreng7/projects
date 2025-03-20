@@ -1,9 +1,9 @@
+import z from 'zod';
 import User from '../models/User.js'
-import { authService } from '../services/AuthServiceBcrypt.js'
 import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js'
 
 
-class UsersController {
+export class UsersController {
 
   constructor(authService) {
     this.authService = authService
@@ -81,11 +81,24 @@ class UsersController {
         return res.status(404).json({ error: "Usuário não encontrado." })
       }
 
+          // Verifica se foi enviada uma nova senha
       if (password) {
-        schemaValidator.password = await this.authService.compareHash(password);
+         // Compara a NOVA senha com o hash ANTIGO (para evitar hash desnecessário)
+      const isSamePassword = await this.authService.compareHash(password, user.password);
+      
+      if (isSamePassword) {
+        return res.status(400).json({ error: "A nova senha não pode ser igual à anterior." });
       }
 
-      await user.updateOne({ email, password: schemaValidator.password || user.password });
+        // Gera novo hash APENAS se a senha for diferente
+      schemaValidator.password = await this.authService.createHash(password);
+    }
+
+      await user.updateOne({ 
+        email,
+        password: schemaValidator.password || user.password // Fallback seguro
+      });
+
 
       return res.status(204).end();
     } catch (err) {
@@ -116,5 +129,3 @@ class UsersController {
   }
 
 }
-
-export default new UsersController(authService)
