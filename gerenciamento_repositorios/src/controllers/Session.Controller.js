@@ -21,13 +21,16 @@ export class SessionController {
     }
 
     const hashIsValid = await this.authService.compare(password, user)
-
     if (!hashIsValid) {
       return res.status(401).json({ error: 'User / Password invalid.' });
     }
 
     const { _id } = user 
-    return res.json({ user: { _id, email }, token: jwt.sign( { _id }, auth.secret) })
+    
+    return res.json({
+      user: { _id, email }, 
+      token: jwt.sign({ _id }, auth.secret, { expiresIn: auth.expiresIn })
+    })
 
   }
 }
