@@ -1,12 +1,10 @@
 import { Router } from 'express'
-import { authService } from '../services/AuthServiceBcrypt.js'
-import { UsersController } from '../controllers/User.Controller.js'
+import { UserController } from '../controllers/User.Controller.js'
 
 export const usersRouter = Router()
-const usersController = new UsersController(authService);
 
-usersRouter.get('/', usersController.index)
-usersRouter.get('/:id', usersController.show)
-usersRouter.post('/', usersController.create)
-usersRouter.put('/:id', usersController.update)
-usersRouter.delete('/:id', usersController.remove)
+usersRouter.get('/', UserController.index)
+usersRouter.get('/:id', UserController.show)
+usersRouter.post('/', UserController.create)
+usersRouter.put('/:id', UserController.update)
+usersRouter.delete('/:id', UserController.remove)

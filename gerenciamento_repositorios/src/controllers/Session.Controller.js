@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 import auth from '../config/auth-jwt.js'
+import bcrypt from 'bcryptjs'
 import { loginSchema } from '../schemas/user.schema.js'
 
 
-export class SessionsController {
+class SessionsController {
   
   constructor(authService) {
     this.authService = authService
@@ -19,7 +20,7 @@ export class SessionsController {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 
-    const hashIsValid = await this.authService.compareHash(password, user.password)
+    const hashIsValid = bcrypt.compare(password, user.password)
     if (!hashIsValid) {
       return res.status(401).json({ error: 'User / Password invalid.' });
     }
@@ -33,3 +34,5 @@ export class SessionsController {
 
   }
 }
+
+export const session = new SessionsController() 

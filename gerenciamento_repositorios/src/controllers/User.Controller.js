@@ -1,18 +1,15 @@
 import z from 'zod';
+import bcrypt from 'bcryptjs';
 import User from '../models/User.js'
 import { createUserSchema, updateUserSchema } from '../schemas/user.schema.js'
 
 
-export class UsersController {
-
-  constructor(authService) {
-    this.authService = authService
-  }
+class UsersController {
 
   async index(req, res) {
 
     try {
-      const users = await User.find() // Lista todos os usuários
+      const users = await User.find() 
       return res.json(users)
 
     } catch (err) {
@@ -50,7 +47,7 @@ export class UsersController {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
 
-      const encryptedPassword = await this.authService.createHash(password)
+      const encryptedPassword = await bcrypt.hash(password, 10)
       const newUser = await User.create({ email, password: encryptedPassword })
 
       return res.status(201).json({
@@ -81,17 +78,16 @@ export class UsersController {
         return res.status(404).json({ error: "Usuário não encontrado." })
       }
 
-          // Verifica se foi enviada uma nova senha
+  
       if (password) {
-         // Compara a NOVA senha com o hash ANTIGO (para evitar hash desnecessário)
-      const isSamePassword = await this.authService.compareHash(password, user.password);
+      const isSamePassword = await bcrypt.compare(password, user.password);
       
       if (isSamePassword) {
         return res.status(400).json({ error: "A nova senha não pode ser igual à anterior." });
       }
 
         // Gera novo hash APENAS se a senha for diferente
-      schemaValidator.password = await this.authService.createHash(password);
+      schemaValidator.password = await bcrypt.hash(password, 10);
     }
 
       await user.updateOne({ 
@@ -129,3 +125,5 @@ export class UsersController {
   }
 
 }
+
+export const UserController = new UsersController()
