@@ -7,30 +7,23 @@ import { loginSchema } from '../schemas/user.schema.js'
 
 class SessionsController {
   
-  constructor(authService) {
-    this.authService = authService
-  }
-
   async login(req, res) {
 
     const { email, password } = loginSchema.parse(req.body)
 
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ email }).select('+password')
     if (!user) {
       return res.status(401).json({ error: 'User / Password invalid.' })
     }
 
-    const hashIsValid = bcrypt.compare(password, user.password)
+    const hashIsValid = await bcrypt.compare(password, user.password)
     if (!hashIsValid) {
       return res.status(401).json({ error: 'User / Password invalid.' });
     }
 
     const { _id } = user 
     
-    return res.json({
-      user: { _id, email }, 
-      token: jwt.sign({ _id }, auth.secret, { expiresIn: auth.expiresIn })
-    })
+    return res.json({user: { _id, email }, token: jwt.sign({ _id }, auth.secret, { expiresIn: auth.expiresIn })})
 
   }
 }
