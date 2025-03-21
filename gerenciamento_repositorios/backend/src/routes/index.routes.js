@@ -8,7 +8,7 @@ import { UserController } from '../controllers/User.Controller.js'
 export const router = Router()
 
 router.post('/login', loginController.login)
-router.post('/users', UserController.register)
+router.post('/register', UserController.register)
 
 router.use(authMiddleware); 
 
