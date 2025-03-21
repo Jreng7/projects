@@ -36,13 +36,13 @@ class UsersController {
      }
   }
 
-  async create(req, res) {
+  async register(req, res) {
     try {
 
       const schemaValidator = createUserSchema.parse(req.body)
       const { email, password } = schemaValidator
 
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).select('+password')
       if (user) {
         return res.status(422).json({ message: `User ${email} already exists.` })
       }
@@ -77,7 +77,6 @@ class UsersController {
       if (!user) {
         return res.status(404).json({ error: "Usuário não encontrado." })
       }
-
   
       if (password) {
       const isSamePassword = await bcrypt.compare(password, user.password);
