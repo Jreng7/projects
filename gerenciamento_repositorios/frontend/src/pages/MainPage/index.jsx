@@ -8,12 +8,12 @@ const MainPage = () => {
   }
 
   return (
-    <header>
+    <div className="header">
       <nav>
         <h3>SisRepo</h3>
         <button>Sair</button>
       </nav>
-    </header>
+    </div>
   )
 }
 

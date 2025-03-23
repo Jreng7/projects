@@ -1,9 +1,21 @@
-header {
-  display: flex;
+.header {
+  width: 100vw;
 }
 
 nav {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #4c4c4c;
+  padding: 1rem 2rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 5px 5px;
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(59, 49, 114, 0.15) 0px 48px 100px 0px;
+}
+
+nav h3 {
+  font-size: 1.2rem;
 }
