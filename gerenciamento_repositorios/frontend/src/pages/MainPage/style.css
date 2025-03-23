@@ -43,9 +43,10 @@ nav h3 {
   display: flex;
   flex-direction: column;
   align-items: start;
+  
   max-width: 380px;
   margin-top: 4rem; 
-  background-color: #2a2a52;
+  background-color: #3c3c70;
   padding: 2rem;
   border-radius: 7px;
 }
@@ -56,7 +57,7 @@ nav h3 {
 
 .search input {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.7rem;
   outline: none;
   border: 1px solid #646cff;
   border-radius: 8px;
@@ -69,6 +70,9 @@ nav h3 {
 
 .btn {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -76,10 +80,11 @@ nav h3 {
 .btn button {
   border-radius: 8px;
   outline: none;
-  background-color: #4549a0;
+  background-color: #545ce7;
+
   transition: 0.3s ease;
 }
 
 .btn button:hover{
-  background-color: #646cff;
+  background-color: #8086f3;
 }
