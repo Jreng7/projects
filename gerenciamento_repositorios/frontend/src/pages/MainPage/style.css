@@ -17,5 +17,17 @@ nav {
 }
 
 nav h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
+
+#btnMain {
+  background-color: rgb(184, 89, 22);
+  padding: 0.7rem 1.4rem;
+  transition: 0.3s all;
+}
+
+#btnMain:hover {
+  background-color: burlywood;
+  border: none;
+  color: #4c4c4c;
+} 
