@@ -9,6 +9,8 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
+    console.log('email', email)
+    console.log('password', password)
     console.log('Login')
   }
 
@@ -21,12 +23,12 @@ const LoginPage = () => {
 
           <div className="field">
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" id="email" required />
+            <input type="email" name="email" id="email" value={email} onChange={ (e) => setEmail(e.target.value) } required />
           </div>
 
           <div className="field">
             <label htmlFor="password">Senha:</label>
-            <input type="password" name="password" id="password" required />
+            <input type="password" name="password" id="password" value={password} onChange={ (e) => setPassword(e.target.value) } required />
           </div>
 
           <div className="actions">
