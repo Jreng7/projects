@@ -32,7 +32,7 @@
   margin-bottom: 3px;
 } 
 
-#login .field input {
+#email, #password {
   width: 100%;
   font-size: 1.2rem;
   margin-bottom: 1.7rem;
@@ -43,6 +43,14 @@
   box-shadow: none;
   background-color: #4b4b4b;
   
+}
+
+#password:hover {
+  border-color: #646cff;
+}
+
+#email:hover {
+  border-color: #646cff;
 }
 
 .actions {
