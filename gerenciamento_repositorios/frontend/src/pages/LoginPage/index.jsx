@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import './styles.css';
 
 
 const LoginPage = () => {
 
-  const handleLogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault()
     console.log('Login')
   }
 
@@ -17,12 +21,12 @@ const LoginPage = () => {
 
           <div className="field">
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" required />
           </div>
 
           <div className="field">
             <label htmlFor="password">Senha:</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" required />
           </div>
 
           <div className="actions">
