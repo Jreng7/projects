@@ -45,7 +45,7 @@ nav h3 {
   align-items: start;
   max-width: 380px;
   margin-top: 4rem; 
-  background-color: rgb(47, 84, 95);
+  background-color: #2a2a52;
   padding: 2rem;
   border-radius: 7px;
 }
@@ -58,9 +58,13 @@ nav h3 {
   width: 100%;
   padding: 0.8rem;
   outline: none;
-  border: none;
-  border-radius: 0.4rem;
+  border: 1px solid #646cff;
+  border-radius: 8px;
   margin-top: 0.3rem;
+  background-color: #d8d8d8;
+  color: #4c4c4c;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .btn {
@@ -72,11 +76,10 @@ nav h3 {
 .btn button {
   border-radius: 8px;
   outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: none;
-  transition: 0.2s ease;
+  background-color: #4549a0;
+  transition: 0.3s ease;
 }
 
 .btn button:hover{
-  border-color: #646cff;
+  background-color: #646cff;
 }
