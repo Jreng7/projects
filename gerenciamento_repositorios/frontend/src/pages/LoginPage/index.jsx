@@ -3,6 +3,7 @@ import React from "react";
 const LoginPage = () => {
   return (
     <div id="login">
+
       <h1 className="title">Login</h1>
       <form className="form">
 
@@ -15,8 +16,13 @@ const LoginPage = () => {
           <label htmlFor="password">Senha:</label>
           <input type="password" name="password" id="password" />
         </div>
+
+        <div className="actions">
+          <button>Entrar</button>
+        </div>
         
       </form>
+
     </div>
   )
 }
