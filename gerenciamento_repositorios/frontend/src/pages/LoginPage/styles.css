@@ -10,10 +10,11 @@
   min-width: 350px;
   padding: 2rem;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 .boxform h1 {
@@ -38,8 +39,10 @@
   padding: 0.7rem;
   border-radius: 8px;
   outline: none;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: none;
+  background-color: #4b4b4b;
+  
 }
 
 .actions {
