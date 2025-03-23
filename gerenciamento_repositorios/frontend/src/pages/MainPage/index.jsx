@@ -1,11 +1,19 @@
 import React from "react";
+import "./style.css"
 
 const MainPage = () => {
+
+  const handleLogout = () => {
+    console.log('Saindo...')
+  }
+
   return (
-    <div className="nav">
-      <h1 className="logo">SisRepo</h1>
-      <button>Sair</button>
-    </div>
+    <header>
+      <nav>
+        <h3>SisRepo</h3>
+        <button>Sair</button>
+      </nav>
+    </header>
   )
 }
 
