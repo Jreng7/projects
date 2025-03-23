@@ -7,11 +7,13 @@
 }
 
 .boxform {
-  min-width: 360px;
-  background-color: rgb(20, 20, 20);
-  padding: 4rem;
-  border: solid 1px rgb(61, 61, 61);
+  min-width: 350px;
+  padding: 2rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);;
   border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .boxform h1 {
@@ -24,15 +26,15 @@
 }
 
 #login .field label {
-  display: block;
-  font-size: 1.2rem;
+  display: block; 
+  font-size: 1.1rem;
   margin-bottom: 3px;
 } 
 
 #login .field input {
   width: 100%;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.7rem;
   padding: 0.7rem;
   border-radius: 8px;
   outline: none;
@@ -41,6 +43,6 @@
 }
 
 .actions {
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
