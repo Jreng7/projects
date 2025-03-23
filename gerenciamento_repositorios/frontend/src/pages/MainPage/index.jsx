@@ -8,11 +8,22 @@ const MainPage = () => {
   }
 
   return (
-    <div className="header">
-      <nav>
-        <h3>SisRepo</h3>
-        <button id="btnMain">Sair</button>
-      </nav>
+    <div className="mainpage">
+      <header className="header">
+        <nav>
+          <h3>SisRepo</h3>
+          <button onClick={handleLogout} id="btnMain">Sair</button>
+        </nav>
+      </header>
+
+      <div className="search">
+        <label htmlFor="query">Procurar:</label>
+        <input type="search" id="query" name="query"/>
+        <div className="btn">
+          <button>Limpar</button>
+          <button>Buscar</button>
+        </div>
+      </div>
     </div>
   )
 }
