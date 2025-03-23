@@ -3,6 +3,11 @@ import './styles.css';
 
 
 const LoginPage = () => {
+
+  const handleLogin = () => {
+    console.log('Login')
+  }
+
   return (
     <div id="login">
     
@@ -21,7 +26,7 @@ const LoginPage = () => {
           </div>
 
           <div className="actions">
-            <button>Entrar</button>
+            <button onClick={handleLogin}>Entrar</button>
           </div>
         </form>
       </div>
