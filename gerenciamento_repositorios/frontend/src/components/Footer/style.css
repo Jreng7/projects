@@ -3,19 +3,18 @@ footer {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 20px 0;
-  padding: 10;
+  padding: 15px 0;
   background-color: #f8f9fa;
   color: #555;
   border-top: solid 1px #ddd;
   margin-top: auto;
   font-size: 1rem;
-  line-height: 22px;
+  line-height: 15px;
 }
 
 footer p {
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   margin: 0;
 }
 
@@ -23,4 +22,10 @@ footer a {
   color: #007bff; 
   text-decoration: none;
   margin: 0 5px; 
+}
+
+@media (max-width: 768px) {
+  footer {
+    line-height: 20px;
+  }
 }

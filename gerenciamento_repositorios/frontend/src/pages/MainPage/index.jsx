@@ -34,16 +34,26 @@ const MainPage = () => {
       </div>
 
       <div className="repositories">
-        <h2 className="title">Repositórios</h2>
-        <ul className="list">
+        <h2>Repositórios</h2>
+
+        <ul>
           <li>
-            <div className="info">
+            <p>
               <div className="owner">Facebook</div>
-              <div className="react">React</div>
-            </div>
-            <button>Apagar</button>
+              <div className="name">React</div>
+            </p>
+            <button>x</button>
+          </li>
+
+          <li>
+            <p>
+              <div className="owner">Facebook</div>
+              <div className="name">React</div>
+            </p>
+            <button>x</button>
           </li>
         </ul>
+
       </div>
     </div>
   )
