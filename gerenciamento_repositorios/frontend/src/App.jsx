@@ -1,9 +1,11 @@
 import AppRoutes from './AppRoutes'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
     <>
       <AppRoutes />
+      <Footer />
     </>
   )
 }
