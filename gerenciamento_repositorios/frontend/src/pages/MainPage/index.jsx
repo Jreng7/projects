@@ -1,4 +1,5 @@
 import React from "react";
+import { Nav } from "./Nav";
 import "./style.css"
 
 const MainPage = () => {
@@ -15,15 +16,15 @@ const MainPage = () => {
     console.log('clear')
   }
 
+  const handleDeleteRepo = () => {
+    console.log('Repositório deletado com sucesso!')
+  }
+
   return (
     <div className="mainpage">
-      <header className="header">
-        <nav>
-          <h3>SisRepo</h3>
-          <button onClick={handleLogout} id="btnMain">Sair</button>
-        </nav>
-      </header>
 
+      <Nav argumento={handleLogout}/>
+      
       <div className="search">
         <label htmlFor="query">Procurar:</label>
         <input type="search" id="query" name="query"/>
@@ -42,17 +43,25 @@ const MainPage = () => {
               <div className="owner">Facebook</div>
               <div className="name">React</div>
             </p>
-            <button>x</button>
+            <button onClick={handleDeleteRepo}>x</button>
           </li>
 
           <li>
             <p>
-              <div className="owner">Facebook</div>
+              <div className="owner">Facebook</div> 
               <div className="name">React</div>
             </p>
             <button>x</button>
           </li>
         </ul>
+ 
+        <div className="search">
+          <label htmlFor="repo" className="label-repo">Novo Repositório:</label>
+          <input type="url" id="repo" name="repo"/>
+          <div className="btn">
+            <button onClick={handleSearch}>Adicionar</button>
+          </div>
+        </div>
 
       </div>
     </div>
