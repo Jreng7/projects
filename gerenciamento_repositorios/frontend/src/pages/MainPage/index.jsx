@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav } from "./Nav";
+import { Search } from "./Search";
 import "./style.css"
 
 const MainPage = () => {
@@ -9,11 +10,7 @@ const MainPage = () => {
   }
 
   const handleSearch = (query) => {
-    console.log('query' ,query)
-  }
-
-  const handleClear = () => {
-    console.log('clear')
+    console.log(query)
   }
 
   const handleDeleteRepo = () => {
@@ -24,16 +21,8 @@ const MainPage = () => {
     <div className="mainpage">
 
       <Nav argumento={handleLogout}/>
+      <Search search={handleSearch}/>
       
-      <div className="search">
-        <label htmlFor="query">Procurar:</label>
-        <input type="search" id="query" name="query"/>
-        <div className="btn">
-          <button onClick={handleClear}>Limpar</button>
-          <button onClick={handleSearch}>Buscar</button>
-        </div>
-      </div>
-
       <div className="repositories">
         <h2>Repositórios</h2>
 
