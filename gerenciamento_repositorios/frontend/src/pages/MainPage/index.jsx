@@ -20,8 +20,8 @@ const MainPage = () => {
         <label htmlFor="query">Procurar:</label>
         <input type="search" id="query" name="query"/>
         <div className="btn">
-          <button>Limpar</button>
           <button>Buscar</button>
+          <button>Limpar</button>
         </div>
       </div>
     </div>

@@ -41,24 +41,25 @@ nav h3 {
 
 .search {
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  
-  max-width: 380px;
+  align-items: center;
+  gap: 2rem;
+
+  max-width: 800px;
   margin-top: 4rem; 
   background-color: #3c3c70;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 7px;
 }
 
 .search label {
   font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .search input {
   width: 100%;
   padding: 0.7rem;
-  outline: none;
+  outline: 1px solid #646cff80;
   border: 1px solid #646cff;
   border-radius: 8px;
   margin-top: 0.3rem;
@@ -66,15 +67,16 @@ nav h3 {
   color: #4c4c4c;
   font-size: 1.1rem;
   font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.search input:hover {
+  outline: 1px solid rgb(108, 190, 53);
 }
 
 .btn {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1rem;
 }
 
 .btn button {
@@ -87,4 +89,29 @@ nav h3 {
 
 .btn button:hover{
   background-color: #8086f3;
+}
+
+@media (max-width: 768px ) {
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    background-color: #3c3c70;
+    border-radius: 7px;
+  }
+
+  .search label {
+    margin-bottom: -1.7rem;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    margin-top: 0.5rem;
+  }  
 }
