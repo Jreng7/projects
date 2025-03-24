@@ -7,6 +7,14 @@ const MainPage = () => {
     console.log('Saindo...')
   }
 
+  const handleSearch = (query) => {
+    console.log('query' ,query)
+  }
+
+  const handleClear = () => {
+    console.log('clear')
+  }
+
   return (
     <div className="mainpage">
       <header className="header">
@@ -20,9 +28,22 @@ const MainPage = () => {
         <label htmlFor="query">Procurar:</label>
         <input type="search" id="query" name="query"/>
         <div className="btn">
-          <button>Buscar</button>
-          <button>Limpar</button>
+          <button onClick={handleClear}>Limpar</button>
+          <button onClick={handleSearch}>Buscar</button>
         </div>
+      </div>
+
+      <div className="repositories">
+        <h2 className="title">Repositórios</h2>
+        <ul className="list">
+          <li>
+            <div className="info">
+              <div className="owner">Facebook</div>
+              <div className="react">React</div>
+            </div>
+            <button>Apagar</button>
+          </li>
+        </ul>
       </div>
     </div>
   )
