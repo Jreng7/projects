@@ -2,11 +2,9 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
-
   width: 100%;
   padding: 20px 0;
   padding: 10;
-
   background-color: #f8f9fa;
   color: #555;
   border-top: solid 1px #ddd;

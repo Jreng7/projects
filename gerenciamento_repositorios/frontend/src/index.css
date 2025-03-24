@@ -22,7 +22,6 @@ a:hover {
 
 html {
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 *, *:before, *:after {
@@ -38,6 +37,12 @@ body {
 
   margin: 0;
   padding: 0;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
