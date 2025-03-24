@@ -37,7 +37,7 @@ nav h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 
 .search {
@@ -48,7 +48,7 @@ nav h3 {
   max-width: 800px;
   margin-top: 4rem; 
   background-color: #3c3c70;
-  padding: 2.5rem;
+  padding: 2rem 2.5rem;
   border-radius: 7px;
 }
 

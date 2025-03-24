@@ -11,7 +11,7 @@ function Footer() {
         </p>
         <p>
           <span>Inspirado pelo trabalho de</span>
-          <a href="https://www.youtube.com/@GreatStackDev" target="_blank" rel="noopener noreferrer">GreatStack</a>com algumas melhorias.
+          <a href="https://www.youtube.com/@f.fontoura" target="_blank" rel="noopener noreferrer">DevSamurai</a>com algumas melhorias.
         </p>
       </footer>
     </>
