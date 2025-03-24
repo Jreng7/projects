@@ -37,7 +37,7 @@ nav h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  margin-top: 7rem;
 }
 
 .search {
