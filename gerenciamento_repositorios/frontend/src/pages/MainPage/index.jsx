@@ -14,15 +14,19 @@ const MainPage = () => {
     console.log(query)
   }
 
-  const handleDeleteRepo = () => {
-    console.log('Repositório deletado com sucesso!')
+  const handleDeleteRepo = (repository) => {
+    console.log('Deleted', repository)
+  }
+
+  const handleNewRepo = (url) => {
+    console.log('repo', url)
   }
 
   return (
     <div className="mainpage">
       <Nav argumento={handleLogout}/>
       <Search search={handleSearch}/>
-      <Repositories />
+      <Repositories repo={[]} deleteRepo={handleDeleteRepo} onNewRepo={handleNewRepo} />
     </div>
   )
 }
