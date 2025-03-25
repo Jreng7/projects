@@ -26,13 +26,8 @@ class RepositoriesController {
 
   async create(req, res) {
     try {
-
-      const { user_id } = req.params
-      const { name, url } = createRepoSchema(req.body)
-
-      if (user_id !== req.userId.toString()) { 
-        return res.status(403).json({ error: "Ação não permitida." });
-      }
+      const { user_id } = req.params;
+      const { name, url } = createRepoSchema.parse(req.body);
 
       const userExists = await User.exists({ _id: user_id })
       if (!userExists) {

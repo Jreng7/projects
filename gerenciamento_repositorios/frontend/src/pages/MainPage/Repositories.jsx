@@ -11,10 +11,10 @@ export function Repositories({ repo, deleteRepo, onNewRepo }){
 
         <ul>
           <li>
-            <p>
+            <div>
               <div className="owner">Facebook</div>
               <div className="name">React</div>
-            </p>
+            </div>
             <button onClick={() => deleteRepo(null)}>x</button>
           </li>
         </ul>

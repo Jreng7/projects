@@ -5,19 +5,20 @@ import { Repositories } from "./Repositories";
 import { getRepositories } from "../../services/api";
 import "./style.css"
 
-const userId = '67cc5f58f461d186f397284e'
+const userId = '67e2c569a8baec5c03e837ae'
 
 const MainPage = () => {
 
   const [repositories, setRepositories] = useState([])
 
-  const loadData = async (query = '') => {
+  const loadData = async () => {
     const response = await getRepositories(userId)
-
     setRepositories(response.data)
   }
 
-  useEffect(() => {})
+  useEffect(() => {
+    (async () => await loadData())()
+  }, [])
 
   const handleLogout = () => {
     console.log('Saindo...')
@@ -39,7 +40,7 @@ const MainPage = () => {
     <div className="mainpage">
       <Nav argumento={handleLogout}/>
       <Search search={handleSearch}/>
-      <Repositories repo={[]} deleteRepo={handleDeleteRepo} onNewRepo={handleNewRepo} />
+      <Repositories repo={repositories} deleteRepo={handleDeleteRepo} onNewRepo={handleNewRepo} />
     </div>
   )
 }

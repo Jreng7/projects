@@ -5,5 +5,6 @@ export const usersRouter = Router()
 
 usersRouter.get('/', UserController.index)
 usersRouter.get('/:id', UserController.show)
+usersRouter.post('/', UserController.register)
 usersRouter.put('/:id', UserController.update)
 usersRouter.delete('/:id', UserController.remove)
