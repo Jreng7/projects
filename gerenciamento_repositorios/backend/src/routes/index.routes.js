@@ -10,7 +10,7 @@ export const router = Router()
 router.post('/login', loginController.login)
 router.post('/register', UserController.register)
 
-router.use(authMiddleware); 
+// router.use(authMiddleware); 
 
 router.use('/users', usersRouter)
 router.use('/users/:user_id/repositories', repositoryRouter)
