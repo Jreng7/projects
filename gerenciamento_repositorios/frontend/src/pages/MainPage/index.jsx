@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Nav } from "./Nav";
 import { Search } from "./Search";
 import { Repositories } from "./Repositories";
 import { getRepositories } from "../../services/api";
 import "./style.css"
 
+const userId = '67cc5f58f461d186f397284e'
 
 const MainPage = () => {
 
-  const userId = '67cc5f58f461d186f397284e'
+  const [repositories, setRepositories] = useState([])
 
   const loadData = async (query = '') => {
     const response = await getRepositories(userId)
+
+    setRepositories(response.data)
   }
+
+  useEffect(() => {})
 
   const handleLogout = () => {
     console.log('Saindo...')
